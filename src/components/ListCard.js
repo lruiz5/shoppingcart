@@ -1,11 +1,12 @@
 import Stock from "../assets/images/1001.jpg";
+import "./ListCard.css";
 
 export const ListCard = ({ item }) => {
   const { name, price, poster_path } = item;
   const poster = poster_path ? `../assets/images/${poster_path}` : Stock;
   return (
-    <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow mx-3 my-3 px-2 py-4">
-      <img className="" src={poster} alt="item poster" />
+    <div className="productCard max-w-sm bg-white border border-gray-200 rounded-lg shadow mx-3 my-3 px-2 py-4">
+      <img src={poster} alt="item poster" />
       <div>
         <p className="my-5 text-lg font-semibold text-gray-900">{name}</p>
         <div className="flex flex-row justify-between items-center">

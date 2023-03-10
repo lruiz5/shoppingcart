@@ -1,4 +1,4 @@
-import Stock from "../assets/images/1002.jpg";
+import Stock from "../assets/images/1001.jpg";
 
 export const CartCard = ({ item }) => {
   const { name, price, poster_path } = item;

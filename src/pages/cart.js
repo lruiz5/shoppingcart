@@ -3,20 +3,20 @@ import { useTitle } from "../hooks/useTitle";
 const cartItems = [
   {
     id: "hp-1",
-    poster: "1001.jpg",
+    poster_path: "1001.jpg",
     name: "Sony Wh-Ch510 Bluetooth Wireless",
     price: "149",
   },
 
   {
     id: "hp-5",
-    poster: "1005.jpg",
+    poster_path: "1005.jpg",
     name: "Apple Airpods Max Bluetooth Headset",
     price: "199",
   },
   {
     id: "hp-6",
-    poster: "1006.jpg",
+    poster_path: "1006.jpg",
     name: "ZEBRONICS Zeb-Thunder Wired",
     price: "29",
   },
