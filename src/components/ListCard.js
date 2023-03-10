@@ -1,23 +1,38 @@
+import { useEffect, useState } from "react";
 import Stock from "../assets/images/1001.jpg";
+import { useCart } from "../context/CartContext";
 import "./ListCard.css";
 
 export const ListCard = ({ item }) => {
+  const { addToCart, removeFromCart, cartList } = useCart();
+  const [isInCart, setIsInCart] = useState(false);
   const { name, price, poster_path } = item;
   const poster = poster_path ? `../assets/images/${poster_path}` : Stock;
+
+  useEffect(() => {
+    const productInCart = cartList.find((current) => current.id === item.id);
+
+    productInCart ? setIsInCart(true) : setIsInCart(false);
+  }, [cartList, item.id]);
   return (
-    <div className="productCard max-w-sm bg-white border border-gray-200 rounded-lg shadow mx-3 my-3 px-2 py-4">
-      <img src={poster} alt="item poster" />
-      <div>
-        <p className="my-5 text-lg font-semibold text-gray-900">{name}</p>
-        <div className="flex flex-row justify-between items-center">
-          <p className="mb-3 text-lg font-semibold text-gray-700">${price}</p>
+    <div className="productCard">
+      <img src={poster} alt="product poster" />
+      <p className="name">{name}</p>
+      <div className="action">
+        <p className="price">${price}</p>
+        {isInCart ? (
           <button
+            className="remove"
             type="button"
-            class="text-white text-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-normal rounded-lg px-3 py-1 mr-2 focus:outline-none"
+            onClick={() => removeFromCart(item)}
           >
+            Remove
+          </button>
+        ) : (
+          <button type="button" onClick={() => addToCart(item)}>
             Add To Cart
           </button>
-        </div>
+        )}
       </div>
     </div>
   );

@@ -1,37 +1,18 @@
 import { CartCard } from "../components";
 import { useTitle } from "../hooks/useTitle";
-const cartItems = [
-  {
-    id: "hp-1",
-    poster_path: "1001.jpg",
-    name: "Sony Wh-Ch510 Bluetooth Wireless",
-    price: "149",
-  },
-
-  {
-    id: "hp-5",
-    poster_path: "1005.jpg",
-    name: "Apple Airpods Max Bluetooth Headset",
-    price: "199",
-  },
-  {
-    id: "hp-6",
-    poster_path: "1006.jpg",
-    name: "ZEBRONICS Zeb-Thunder Wired",
-    price: "29",
-  },
-];
+import { useCart } from "../context/CartContext";
 
 export const Cart = ({ title }) => {
+  const { total, cartList } = useCart();
   useTitle(title);
   return (
     <main>
-      <section className="text-xl mx-auto pt-2">
-        <p className="flex font-bold text-2xl justify-center py-10">
-          Cart Items: {cartItems.length}
-        </p>
+      <section className="cart">
+        <h1>
+          Cart Items: {cartList.length} / ${total}
+        </h1>
         <div>
-          {cartItems.map((item) => (
+          {cartList.map((item) => (
             <CartCard key={item.id} item={item} />
           ))}
         </div>
